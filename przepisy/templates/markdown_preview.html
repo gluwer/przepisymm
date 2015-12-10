@@ -1,0 +1,20 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="pl" xmlns="http://www.w3.org/1999/xhtml" xml:lang="pl">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Podgląd</title>
+    <link rel="stylesheet" type="text/css" href="{{ media_url }}/a.css" />	
+  </head>
+  <body>
+    <div class="d0">
+      <a class="popup_close icon cross" href="javascript:window.close();">Zamknij</a>
+      {% if request.user.is_authenticated() %}
+        <div class="recipe_desc">
+          {{ recipe|markdown }}
+        </div>
+      {% else %}
+        Aby skorzystać z podglądu musisz być zalogowany!
+      {% endif %}
+    </div>			
+  </body>
+</html>

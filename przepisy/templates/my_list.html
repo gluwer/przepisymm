@@ -1,0 +1,36 @@
+{% extends 'base2c.html' %}
+
+{% block title %}Moje przepisy{% endblock title %}
+
+{% block content %}
+<div id="box_main" class="box withordering">
+  <h2>Moje przepisy</h2>
+  <div class="ordering_bar">Sortuj wg:
+      <a {% if ordering == 'popularne' %}class="active" {% endif %}href="{{ url_for('przepisy/my_list', ordering='popularne') }}">popularności</a>
+    | <a {% if ordering == 'nowe' %}class="active" {% endif %}href="{{ url_for('przepisy/my_list', ordering='nowe') }}">daty</a>
+    | <a {% if ordering == 'tytul' %}class="active" {% endif %}href="{{ url_for('przepisy/my_list', ordering='tytul') }}">tytułu</a>
+  </div>
+  <div class="box_cnt table_in">
+    {% include 'przepisy/includes/my_list.html' %}
+  </div>
+</div>
+{% endblock content %}
+
+{% block sidebox %}
+<div id="sbox_favs" class="box sbox">
+  <h2>Ulubione przepisy</h2>
+  <div class="box_cnt">
+    <ul>
+      {% for recipe in fav_recipes %}
+        <li><a href="{{ recipe.get_url() }}">{{ recipe.title|e }}</a></li>
+      {% else %}
+        <li class="nobullet"><em>brak ulubionych przepisów!</em></li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+{% endblock sidebox %}
+
+{% block head_js_config %}
+settings.removeDisableButtons = true;
+{% endblock %}

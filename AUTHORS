@@ -1,0 +1,8 @@
+Kutils is a snippets & kay apps repository made by Rafal Jonca.
+
+In addition contains code modified for kay framework or for personal projects made by:
+
+- django-notify (smileychris) - http://code.google.com/p/django-notify/
+- kutils/cache (The Chow Down sample for OpenSocial) - http://code.google.com/p/google-friend-connect-samples/source/browse/#svn/thechowdown-appengine/trunk
+- gfcaccount/backend (Kay framework -> backend is based on Google User backend) - http://code.google.com/p/kay-framework/
+

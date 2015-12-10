@@ -1,0 +1,54 @@
+{% extends 'base2c.html' %}
+
+{% block title %}Przepisy &quot;{{ query|e }}&quot;{% endblock title %}
+
+{% block content %}
+<div id="box_search_form" class="box">
+  <h2>Wyszukaj przepisy diety Montignac</h2>
+  <div class="box_cnt">
+		<form id="search_box" action="{{ url_for('przepisy/search') }}" method="get">
+      <div style="display: none">
+        <input type="hidden" name="a" value="{{ advanced }}" />
+      </div>
+      <p><input type="text" name="q" value="{{ query|e }}" />&nbsp;<input type="submit" value="Szukaj" />&nbsp;<a id="adv_switch" href="#">Opcje zaawansowane &#8659;</a></p>
+      <div class="adv_search_opt" style="{% if advanced == '0' %}display: none{% endif %}">
+        <p><input type="checkbox" name="e" value="0" id="search_box_e" {% if exact == '0' %}checked="checked"{% endif %}/>&nbsp;<label for="search_box_e">Szukaj również pojedynczych wyrazów, a nie całej frazy</label></p>
+        <p><label for="search_box_e">Sortuj po: </label> <select name="o">
+          <option value="" {% if order == ' '%}selected="selected"{% endif %}>Bez sortowania</option>
+          <option value="nowe" {% if order == 'nowe' %}selected="selected"{% endif %}>Nowych</option>
+          <option value="popularne" {% if order == 'popularne' %}selected="selected"{% endif %}>Popularnych</option>
+          <option value="tytul" {% if order == 'tytul' %}selected="selected"{% endif %}>Tytule</option>
+          </select></p>
+      </div>
+      {% if is_more == True %}
+        <div class="search_more_warning">Ponieważ wyników jest bardzo dużo, nie do wszystkich uzyskasz dostęp. Ogranicz liczbę wyników precyzując szykaną frazę.</div>
+      {% endif %}
+		</form>
+  </div>
+</div>
+
+<div id="box_search_results" class="box" {% if query == '' %}style="display: none"{% endif %}>
+  <h2>Przepisy zawierające {{ query|e }}</h2>
+  <div class="box_cnt table_in">
+    {% include 'przepisy/includes/search_list.html' %}
+  </div>
+</div>
+{% endblock content %}
+
+{% block sidebox %}
+<div id="sbox_new" class="box sbox">
+  <h2>Popularne przepisy</h2>
+  <div class="box_cnt">
+    <ul>
+      {% for recipe in pop_recipes %}
+        <li><a href="{{ recipe.get_url() }}">{{ recipe.title|e }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+
+<div id="sbox_other" class="box sbox">
+  <h2>Polecane przepisy</h2>
+  <div id="gfc_recommend" class="box_cnt"></div>
+</div>
+{% endblock sidebox %}

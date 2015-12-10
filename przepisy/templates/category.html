@@ -1,0 +1,27 @@
+{% extends 'base2c.html' %}
+
+{% block title %}Przepisy z kategorii {{ category }}{% endblock title %}
+
+{% block content %}
+<div id="box_main" class="box withordering">
+  <h2>Przepisy z kategorii {{ category }}</h2>
+  <div class="ordering_bar">Sortuj wg:
+      <a {% if ordering == 'popularne' %}class="active" {% endif %}href="{{ url_for('przepisy/category', slug=category_slug, ordering='popularne') }}">popularności</a>
+    | <a {% if ordering == 'nowe' %}class="active" {% endif %}href="{{ url_for('przepisy/category', slug=category_slug, ordering='nowe') }}">daty</a>
+  </div>
+  <div class="box_cnt table_in">
+    {% include 'przepisy/includes/category_list.html' %}
+  </div>
+</div>
+{% endblock content %}
+
+{% block sidebox %}
+<div id="sbox_other" class="box sbox">
+  <h2>Inne kategorie</h2>
+    <ul>
+      {% for category in categories %}
+        <li><a href="{{ category.url }}">{{ category.name_with_count }}</a></li>
+      {% endfor %}
+    </ul>
+</div>
+{% endblock sidebox %}

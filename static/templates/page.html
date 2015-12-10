@@ -1,0 +1,15 @@
+{% extends 'base1c.html' %}
+
+{% block title %}{{ page.title|e }}{% endblock title %}
+
+{% block meta_desc %}{{ page.meta_desc|e }}{% endblock %}
+
+{% block content %}
+<div id="box_static" class="box">
+  <h2>{{ page.title|e }}{% if edit %} <a href="{{ request.base_url }}?edit=1">Edycja</a>{% endif %}</h2>
+  <div class="box_cnt">
+    {{ page.body_html }}
+  </div>  
+</div>
+{% endblock content %}
+

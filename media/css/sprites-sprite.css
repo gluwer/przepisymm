@@ -1,0 +1,56 @@
+
+.icon {
+  width: 16px;
+  height: 16px;
+  background-repeat: no-repeat;
+}
+
+.icon.accept {
+  background-image: url('i/icons.png');
+  background-position: left -0px;
+}
+
+.icon.add {
+  background-image: url('i/icons.png');
+  background-position: left -16px;
+}
+
+.icon.cross {
+  background-image: url('i/icons.png');
+  background-position: left -32px;
+}
+
+.icon.delete {
+  background-image: url('i/icons.png');
+  background-position: left -48px;
+}
+
+.icon.exclamation {
+  background-image: url('i/icons.png');
+  background-position: left -64px;
+}
+
+.icon.arrow-down {
+  background-image: url('i/icons.png');
+  background-position: left -80px;
+}
+
+.icon.arrow-up {
+  background-image: url('i/icons.png');
+  background-position: left -96px;
+}
+
+.icon.preview {
+  background-image: url('i/icons.png');
+  background-position: left -112px;
+}
+
+.icon.star_active {
+  background-image: url('i/icons.png');
+  background-position: left -128px;
+}
+
+.icon.star_inactive {
+  background-image: url('i/icons.png');
+  background-position: left -144px;
+}

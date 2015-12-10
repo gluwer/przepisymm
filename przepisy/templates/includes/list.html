@@ -1,0 +1,41 @@
+<table class="borderless xhr_targer">
+  <thead>
+    <tr><th>Nazwa</th><th>Kategoria</th><th>Etykiety</th><th>Faza</th><th>Typ</th><th>Czas przygotowania</th><th>IG</th><th>Autor</th></tr>
+  </thead>
+  {% if prev is not none or next is not none %}
+  <tfoot>
+    <tr>
+      <td colspan="4" class="paging_prev use_xhr">
+        {% if prev is not none %}
+          <a href="{{ url_for('przepisy/list', ordering=ordering) }}?b={{ prev }}">&laquo; Poprzednia strona</a>
+        {% else %}
+          &nbsp;
+        {% endif %}
+      </td>
+      <td colspan="4" class="paging_next use_xhr">
+        {% if next is not none %}
+          <a href="{{ url_for('przepisy/list', ordering=ordering) }}?b={{ next }}">Następna strona &raquo;</a>
+        {% else %}
+          &nbsp;
+        {% endif %}
+      </td>
+    </tr>
+  </tfoot>
+  {% endif %}
+  <tbody>
+    {% for recipe in recipes %}
+    <tr class="{{ loop.cycle('odd', 'even') }}">
+      <td><a href="{{ recipe.get_url() }}">{{ recipe.title|e }}</a></td>
+      <td><a href="{{ url_for('przepisy/category', slug=recipe.category) }}">{{ recipe.category_display }}</a></td>
+      <td>{% if recipe.tags %}{{ recipe.tags|join(', ')|e }}{% else %}-{% endif %}</td>
+      <td>{{ recipe.phase }}</td>
+      <td>{{ recipe.type }}</td>
+      <td>{{ recipe.time_display }}</td>
+      <td>{% if recipe.ig is none %}-{% else %}{{ recipe.ig }}{% endif %}</td>
+      <td><a href="{{ recipe.author.get_url() }}">{{ recipe.author|e }}</a></td>
+    </tr>
+    {% else %}
+      <tr><td colspan="8" align="center">Brak przepisów.</td></tr>
+    {% endfor %}
+  </tbody>
+</table>

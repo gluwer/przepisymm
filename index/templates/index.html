@@ -1,0 +1,93 @@
+{% extends 'base2c.html' %}
+
+{% block title %}Strona główna{% endblock title %}
+
+{% block content %}
+{% if hpinfo is not none %}
+<div id="box_info" class="box">
+  <h2>{{ hpinfo.title|e }}</h2>
+  <div class="box_cnt">
+    {{ hpinfo.body_html }}
+  </div>  
+</div>
+{% endif %}
+
+<div id="home_box_new" class="box">
+  <h2>Nowe przepisy</h2>
+  <div class="box_cnt">
+    <ul>
+      {% for recipe in new_recipes %}
+        <li><a href="{{ recipe.get_url() }}">{{ recipe.title|e }}</a></li>
+      {% endfor %}
+    </ul>
+    <p class="more_in_link"><a href="{{ url_for('przepisy/list', ordering='nowe') }}">więcej &raquo;</a></p>
+  </div>
+</div>
+
+<div id="home_box_pop" class="box">
+  <h2>Popularne przepisy</h2>
+  <div class="box_cnt">
+    <ul>
+      {% for recipe in pop_recipes %}
+        <li><a href="{{ recipe.get_url() }}">{{ recipe.title|e }}</a></li>
+      {% endfor %}
+    </ul>
+    <p class="more_in_link"><a href="{{ url_for('przepisy/list', ordering='popularne') }}">więcej &raquo;</a></p>
+  </div>
+</div>
+
+<div class="clearfix"></div>
+
+<div id="home_box_categories" class="box">
+  <h2>Kategorie</h2>
+  <div class="box_cnt">
+    <ul>
+      {% for category in categories %}
+        <li><a href="{{ category.url }}">{{ category.name_with_count }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+
+{% if request.user.is_authenticated() %}
+<div id="home_box_fav" class="box">
+  <h2>Ulubione przepisy</h2>
+  <div class="box_cnt">
+    <ul>
+      {% for recipe in fav_recipes %}
+        <li><a href="{{ recipe.get_url() }}">{{ recipe.title|e }}</a></li>
+      {% else %}
+        <li class="nobullet"><em>nie masz ulubionych przepisów!</em></li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+{% else %}
+<div id="home_box_fav" class="box">
+  <h2>Dołącz do nas!</h2>
+  <div class="box_cnt">
+    <p>Dołącz, a będziesz mógł między innymi:</p>
+    <ul>
+      <li>utworzyć listę 20 ulubionych przepisów,</li>
+      <li>dodawać przepisy i tworzyć ich własną biblioteczkę,</li>
+      <li>udostępniać wybrane przepisy innym użytkownikom serwisu,</li>
+      <li>komentować i oceniać przepisy innych.</li>
+    </ul>  
+  </div>
+</div>
+{% endif %}
+
+<div class="clearfix"></div>
+{% endblock content %}
+
+{% block sidebox %}
+<div id="sbox_gfc_activity" class="box sbox">
+  <h2>Najnowsze wydarzenia, czyli...</h2>
+  <div id="gfc_activity" class="box_cnt"></div>
+</div>
+
+<div id="sbox_gfc_members" class="box sbox">
+  <h2>Społeczność witryny</h2>
+  <div id="gfc_members" class="box_cnt"></div>
+</div>
+{% endblock sidebox %}

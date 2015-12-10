@@ -1,0 +1,100 @@
+{% extends 'base2c.html' %}
+
+{% block title %}{{ recipe.title|e }}{% endblock title %}
+
+{% block meta_desc %}{{ recipe.title|e }} - Składniki: {% for ingr in ingredients %}{{ ingr.product|e }}{% if not loop.last %}, {% endif %}{% endfor %}{% endblock %}
+
+{% block content %}
+<div id="box_recipe_view" class="box">
+  <h2>Przepis: "{{ recipe.title|e }}"</h2>
+  <a id="add_to_any_btn" class="a2a_dd" href="http://www.addtoany.com/share_save" title="Udostępnij/Dodaj do zakładek"><img src="http://static.addtoany.com/buttons/favicon.png" width="16" height="16" border="0" alt="Udostępnij/Dodaj do zakładek" /></a><script type="text/javascript">a2a_linkname=document.title;a2a_linkurl=location.href;a2a_onclick=1;a2a_prioritize=["facebook","twitter","google_reader","google_bookmarks","blogger_post","digg","delicious"];</script>
+  {%- if request.user.is_authenticated() == True %}<div id="add_to_favs_btn" class="icon {% if is_a_fave == True %}star_active{% else %}star_inactive{% endif %}" title="Dodaj/usuń z ulubionych"></div>{% endif -%}  
+  <div class="box_cnt">
+    <div class="recipe_ingr">
+      <h3>Składniki:</h3>
+      <ol>
+        {% for ingr in ingredients -%}
+        <li>{{ ingr.product|e }} - {{ ingr.portion }} <i>({{ ingr.weight }})</i></li>
+        {%- endfor %}
+      </ol>
+    </div>
+    <div class="recipe_text">
+      <h3>Sposób przyrządzenia:</h3>
+      <div class="recipe_desc">
+        {{ recipe.recipe_html }}
+      </div>
+    </div>
+    <div class="clearfix"></div>
+    <h3>Informacje dodatkowe:</h3>
+    <div class="recipe_info_1">
+      <p><span class="label">Kategoria:</span><span class="content"><a href="{{ url_for('przepisy/category', slug=recipe.category) }}">{{ recipe.category_display }}</a></span></p>
+      <p><span class="label">Etykiety:</span><span class="content">{{ recipe.tags|join(', ')|e }}</span></p>
+      <p><span class="label">Faza:</span><span class="content">{{ recipe.phase }}</span></p>
+      <p><span class="label">Typ:</span><span class="content">{{ recipe.type }}</span></p>
+      <p><span class="label">Czas przygotowania:</span><span class="content">{{ recipe.time_display }}</span></p>
+      {% if recipe.ig != None %}
+        <p><span class="label">Przewidywane IG:</span><span class="content">{{ recipe.ig }}</span></p>
+      {% endif %}
+      <div class="clearfix"></div>
+    </div>
+    <div class="recipe_info_2">
+      <p><span class="label">Autor:</span><span class="content">
+      {% if recipe.author_display is string %}
+      {{ recipe.author_display|e }}
+      {% else %}
+      <a href="{{ recipe.author_display.get_url() }}">{{ recipe.author_display|e }}</a>
+      {% endif %}
+      </span></p>
+      <p><span class="label">Liczba wyświetleń:</span><span class="content">{{ recipe.views }} <i>(aktualizacja co pół godziny)</i></span></p>
+      {% if is_author == True or is_admin == True %}
+        <p><span class="label">Widoczny dla:</span><span class="content">{{ recipe.rec_vis }}</span></p>
+      {% endif %}
+      <div class="clearfix"></div>
+      {% if is_author == True or is_admin == True %}
+        <div style="margin-top: 0.5em">
+          <a class="link_as_btn" href="{{ url_for('przepisy/edit', key=recipe.key()) }}">Edytuj</a>
+          {% if is_admin == True or recipe.rec_vis != 'Wszystkich' %}
+            <a class="link_as_btn remove_alert" href="{{ url_for('przepisy/remove', key=recipe.key()) }}">Usuń</a>
+          {% endif %}
+          {% if is_admin == True %}
+            <a class="link_as_btn disable_alert" href="{{ url_for('przepisy/disable', key=recipe.key()) }}">Wyłącz</a>
+          {% endif %}
+        </div>
+      {% endif %}
+    </div>
+    <div class="clearfix"></div>
+  </div> 
+</div>
+{% endblock content %}
+
+{% block sidebox %}
+<div id="sbox_gfc_review" class="box sbox">
+  <h2>Recenzje i oceny</h2>
+  {%- if request.user.is_authenticated() == True %}<div id="gfc_recommend_btn"></div>{% endif -%}
+  <div id="gfc_review" class="box_cnt"></div>
+</div>
+<div id="sbox_other_recipes" class="box sbox">
+  <h2>Podobne przepisy publiczne</h2>
+  <div class="box_cnt">
+    <ul>
+      {% for recipe in similar %}
+        <li><a href="{{ recipe.get_url() }}">{{ recipe.title|e }}</a></li>
+      {% else %}
+        <li class="nobullet"><em>brak podobnych przepisów publicznych!</em></li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+{% endblock sidebox %}
+
+{% block head_js_config %}
+settings.recipeFavsKey = '{{ recipe.key() }}';
+settings.removeDisableButtons = true;
+{% endblock %}
+
+{% block last_extra %}
+{{ super() }}
+<img style="position: absolute: top:0; right:0" src="{{ url_for('przepisy/count_view', key=recipe.key()) }}" width="1" height="1" alt="" />
+<script type="text/javascript" src="http://static.addtoany.com/menu/locale/pl-PL.js" charset="utf-8"></script>
+<script type="text/javascript" src="http://static.addtoany.com/menu/page.js"></script>
+{% endblock %}

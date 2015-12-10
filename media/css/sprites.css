@@ -1,0 +1,47 @@
+/** sprite: icons; sprite-image: url('i/icons.png'); sprite-layout: vertical; sprite-ie6-mode: none */ 
+
+.icon {
+  width: 16px;
+  height: 16px;
+  background-repeat: no-repeat;
+}
+
+.icon.accept {
+  background-image: url(i/accept.png); /** sprite-ref: icons; */ 
+}
+
+.icon.add {
+  background-image: url(i/add.png); /** sprite-ref: icons; */ 
+}
+
+.icon.cross {
+  background-image: url(i/cross.png); /** sprite-ref: icons; */ 
+}
+
+.icon.delete {
+  background-image: url(i/delete.png); /** sprite-ref: icons; */ 
+}
+
+.icon.exclamation {
+  background-image: url(i/exclamation.png); /** sprite-ref: icons; */ 
+}
+
+.icon.arrow-down {
+  background-image: url(i/arrow_down.png); /** sprite-ref: icons; */ 
+}
+
+.icon.arrow-up {
+  background-image: url(i/arrow_up.png); /** sprite-ref: icons; */ 
+}
+
+.icon.preview {
+  background-image: url(i/page_white_world.png); /** sprite-ref: icons; */ 
+}
+
+.icon.star_active {
+  background-image: url(i/star_active.png); /** sprite-ref: icons; */ 
+}
+
+.icon.star_inactive {
+  background-image: url(i/star_inactive.png); /** sprite-ref: icons; */ 
+}

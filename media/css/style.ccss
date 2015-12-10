@@ -1,0 +1,643 @@
+default_color = #333
+
+body:
+  margin: 0 auto
+  color: $default_color
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial
+
+a:
+  color: $main_color
+  text-decoration: underline
+  
+  &:hover:
+    color: $main_color.darken(20)
+
+h1, h2, h3, h4, h5, h6:
+  font-family: "Trebuchet MS", Tahoma, Arial
+
+ol, ul:
+  margin->
+    top: 0.5em
+    bottom: 0.5em
+ 
+ul li:
+  list-style: square
+
+fieldset:
+  border:1px solid $main_color
+  margin: 0.4em
+  padding: 0.4em
+  
+legend:
+  color: $main_color.darken(20)
+  padding: 0 0.3em
+  font-weight: bold
+
+.d0:
+  margin: 5px
+  padding: 5px
+  border: 1px solid $main_color
+  min-width: 750px
+
+#bd:
+  width: 100%
+
+.bd2c:
+  float: left
+  width: 100%
+  
+  .main:
+    margin-left: $sbox_width+5
+
+#sc:
+  float:left
+  width: $sbox_width
+  margin-left: -100%
+
+#hd:
+  background-color: $main_color_light
+  position: relative
+  margin-bottom: 10px
+
+#ft:
+  background-color: $main_color_light
+  clear: both
+
+  p:
+    text-align: center
+    color: #fff
+    margin: 0
+    padding: 0.3em
+    
+  a:
+    color: #fff
+  
+    &:hover:
+      color: $main_color_light.brighten(20)
+    
+
+h1 a, h1 a:hover:
+  color: white
+  text-decoration: none
+
+h1:
+  margin: 0 0.5em 0.2em 0.1em
+  padding-top: 0.2em
+  width: $sbox_width
+  
+  span.beta:
+    color: $main_color.darken(30)
+    font->
+      size: 60%
+      style: italic
+
+.slogan:
+  margin: 0 0.5em 0.2em 0.2em
+  width: $sbox_width
+  color: $main_color.darken(30)
+  font->
+    size: 85%
+    style: italic
+
+#gfc_login:
+  width: 350px
+  position: absolute
+  margin->
+    right: 5px
+    top: 5px
+  top: 0
+  right: 0
+  background-color: $main_color_light
+
+#gfc_button:
+  margin: 0 0 1em 1em
+
+#main_search:
+  width: 350px
+  position: absolute
+  margin-right: 5px  
+  top: 44px
+  right: 0
+  text-align: right
+
+  a:
+    color: #fff
+      
+    &:hover:
+      color: $main_color_light.brighten(20)
+
+  input[type=submit]:
+    color: #fff
+    background: $main_color
+    border: 1px solid $main_color.darken(20)
+    padding: 0 0.2em
+    cursor: pointer
+    font-weight: bold
+    
+    &:hover:
+      background: $main_color.brighten(20)
+
+#search_box:
+  input[type=submit]:
+    color: #fff
+    background: $main_color
+    border: 1px solid $main_color.darken(20)
+    padding: 0 0.2em
+    cursor: pointer
+    font-weight: bold
+    
+    &:hover:
+      background: $main_color.brighten(20)
+  
+.strong:
+  font-weight: bold
+
+.weak:
+  color: $default_color.brighten(30)
+  font->
+    style: italic
+    size: 93%
+
+.navi, .navi ul, .navi li, .navi li ul li:
+	list-style: none
+	margin: 0
+	padding: 0
+
+.navi:
+  z-index: 100
+  position: relative
+  font-weight: bold
+  width: 600px
+
+  li:
+    border: 1px solid $main_color.darken(20)
+    border-left: none
+    float: left
+    position: relative
+    
+    &.first:
+      border-left: 1px solid $main_color.darken(20)
+
+    a:
+      background: $main_color
+      color: #fff
+      display: block
+      padding: 0.15em 0.5em
+      text-decoration: none
+
+      &:hover:
+        background: $main_color_light.brighten(20)
+
+    &:hover:
+      a:
+        background: $main_color_light.brighten(20)
+        
+      ul:
+        top: 1.5em
+        
+        a:
+          background: $main_color
+          color: #fff
+        
+          &:hover:
+            background: $main_color_light.brighten(20)
+  
+  ul:
+    background: $main_color
+    position: absolute
+    top: -999em
+    left: -1px
+    
+    li:
+      border: 0
+      float: none
+      
+    a:
+      border: 1px solid $main_color.darken(20)
+      border-top: none
+      white-space: nowrap
+      
+      &:hover:
+        background: $main_color_light.brighten(20)
+
+.box:
+  margin-bottom: 10px
+  
+  &.withordering:
+    position: relative
+  
+  h2:
+    background: $main_color
+    padding: 0.3em
+    margin: 0
+    color: #fff
+      
+  .box_cnt:
+    padding: 0.3em
+    
+    &.table_in:
+      padding: 0
+      
+    p.notice:
+      font-weight: bold
+      font-size: 123.1%
+
+.toc:
+  width: 200px
+  border: 1px solid $main_color
+  float: right
+  padding: 5px
+  margin: 0 0 10px 10px
+  
+  ul:
+    margin: 0 0 0 1em
+    
+  .toctitle:
+    font-weight: bold
+    padding-bottom: 0.5em
+
+.sbox:
+  border: 1px solid $main_color
+
+.bd2c:
+  .box:
+    border: 1px solid $main_color
+
+.box.withborder:
+  border: 1px solid $main_color
+
+#gfc_members, #gfc_review:
+  width: $sbox_width-10
+  padding: 0 0 0.3em 0
+
+input, textarea:
+  border: 1px solid $main_color
+  padding: 0.1em
+
+input:
+  &[type=checkbox]:
+    border: none
+
+  &[type=radio]:
+    border: none
+
+textarea:
+  width: 75%
+  height: 10em
+
+form:
+  ul.errors:
+    li:
+      color: red
+      font-weight: bold  
+  
+  div.actions:
+    margin: 0.3em 0.5em
+    
+    input:
+      color: #fff
+      background: $main_color
+      border: 1px solid $main_color.darken(20)
+      padding: 0.2em 0.5em
+      cursor: pointer
+      font-weight: bold
+      
+      &:hover:
+        background: $main_color.brighten(10)
+  
+  dl:
+    margin: 1em 0.5em
+    
+    dt:
+      margin-top: 0.5em
+      
+      label:
+        font-weight: bold
+    
+    dd:
+      margin: 0.2em 0 0
+      clear: both
+    
+      &.explanation:
+        color: #999
+        font->
+          style: italic
+          size: 93%
+        
+      ul.errors:
+        margin: 0.1em 0 0.1em 0.2em
+        color: red
+        font-weight: bold
+        clear: left
+        
+        li:
+          list-style: none
+          
+      ul:
+        margin: 0.1em 0 0.1em 0
+        
+        li:
+          list-style: none
+          
+          dl:
+            margin: 0
+            clear: both
+            
+            dt:
+              float: left
+              padding-right: 1em
+              
+              label:
+                font->
+                  size: 93%
+                  weight: normal
+              
+            dd:
+              padding-right: 1em
+              float: left
+              clear: none
+
+div.d0 table:
+  width: 100%
+  margin: 0
+  border: 1px solid $main_color
+  
+  &.borderless:
+    border: none
+  
+  &.loading:
+    background: transparent url(i/ajax-loader.gif) no-repeat 50% 50%
+  
+  th, td:
+    padding: 0.3em
+    border: 1px solid $main_color
+  
+  thead:       
+    th:
+      color: #fff
+      background: $main_color_light
+      border->
+        top: none
+        right: none
+      
+      &:first-child:
+        border-left: none
+  
+  tfoot:
+    td:
+      text-align: center
+      border->
+        bottom: none
+        right: none
+      
+      &:first-child:
+        border-left: none
+
+      &.paging_prev:
+        border-right: none
+        text-align: left
+        padding-left: 0.5em
+
+      &.paging_next:
+        border-left: none
+        text-align: right
+        padding-right: 0.5em
+
+  tbody:
+    tr.even:
+      background: $main_color_light.brighten(40)
+      
+    tr:hover, tr.even:hover:
+      background: $main_color_light.brighten(30)
+    
+    td:
+      border->
+        right: none
+        top: none
+        bottom: none
+
+      &:first-child:
+        border-left: none
+        
+ul.flash:
+  padding: 0
+  margin: 0
+
+  li:
+    position: relative
+    text-align: center
+    padding: .3em .4em
+    margin: 0 auto .7em
+    clear: both
+    max-width: 720px
+    list-style: none
+    border: thin solid #00529B
+    background: #BDE5F8
+    color: #00529B
+
+    &.error:
+      border: thin solid #D8000C
+      background: #FFBABA
+      color: #D8000C
+
+    &.success:
+      border: thin solid #4F8A10
+      background: #DFF2BF
+      color: #4F8A10
+
+    &.warning:
+      border: thin solid #9F6000
+      background: #FEEFB3
+      color: #9F6000
+        
+    div.close:
+      position: absolute
+      top: -4px
+      right: 2px
+      font-weight: bold
+      cursor: pointer
+
+noscript p.no_js:
+  text-align: center
+  padding: .3em .4em
+  margin: 0 auto .7em
+  max-width: 720px
+  border: thin solid #00529B
+  background: #BDE5F8
+  color: #00529B
+    
+.ro_row:
+  margin: 0 0.5em 0.5em 0
+  
+  span:
+    &.label, &.value:
+      float: left
+      display: block
+    
+    &.label:
+      font-weight: bold
+      width: 160px
+      padding-left: 0.5em
+
+a.icon:
+  cursor: pointer
+  display: block
+  float: left
+
+#f_recipe:
+  float: left
+
+a.popup_close:
+  float: none
+  width: 50px
+  padding-left: 20px
+  position: absolute
+  top: 8px
+  right: 8px
+
+.ingredients:
+  .ingr_add_remove:
+    margin-top: 0.5em
+    overflow: hidden;
+    text-indent: -9000px
+    width: 72px
+
+  #f_ingr__0__portion, #f_ingr__1__portion, #f_ingr__2__portion, #f_ingr__3__portion, #f_ingr__4__portion, #f_ingr__5__portion, #f_ingr__6__portion, #f_ingr__7__portion, #f_ingr__8__portion, #f_ingr__9__portion, #f_ingr__10__portion, #f_ingr__11__portion, #f_ingr__12__portion, #f_ingr__13__portion, #f_ingr__14__portion, #f_ingr__15__portion, #f_ingr__16__portion, #f_ingr__17__portion, #f_ingr__18__portion, #f_ingr__19__portion, #f_ingr__20__portion:
+    width: 3em;
+    
+.ac_loading:
+	background: white url('i/ajax-loader.gif') right center no-repeat
+
+.ac_odd:
+	background-color: $main_color_light.brighten(40);
+
+.ac_over:
+  background-color: $main_color_light.brighten(30)
+  color: white
+
+#box_recipe_view:
+  position: relative
+  
+  p:
+    clear: both
+    margin-bottom: 0.5em
+    padding-left: 0.5em
+
+  span.label:
+    float: left
+    width: 150px
+    font-weight: bold
+  
+  span.content:
+    float: left
+    font-style: italic
+    
+  div.recipe_ingr:
+    width: 48%
+    float: left
+    
+  div.recipe_text:
+    width: 48%
+    float: right
+
+  div.recipe_info_1:
+    width: 48%
+    float: left
+    
+  div.recipe_info_2:
+    width: 48%
+    float: right
+
+  #add_to_favs_btn:
+    position: absolute
+    top: 5px
+    right: 26px
+    cursor: pointer
+    
+  #add_to_any_btn:
+    position: absolute
+    top: 5px
+    right: 5px
+
+#sbox_gfc_review:
+  position: relative
+
+  #gfc_recommend_btn:
+    position: absolute
+    top: 3px
+    right: 0
+    width: 110px
+
+.link_as_btn:
+  color: #fff
+  background: $main_color
+  border: 1px solid $main_color.darken(20)
+  padding: 0.2em 0.5em
+  font-weight: bold
+  display: inline-block
+  margin: 0.3em 0 0.3em 0.5em
+  text-decoration: none
+      
+  &:hover:
+    background: $main_color.brighten(10)
+    color: #fff
+    text-decoration: none
+
+ul li.nobullet:
+  list-style: none
+
+.ordering_bar:
+  position: absolute
+  top: 5px
+  right: 5px
+  text-align: right
+  color: #fff
+    
+  a:
+    color: #fff
+  
+    &:hover:
+      color: $main_color_light.brighten(20)
+      
+    &.active:
+      font-weight: bold
+      text-decoration: none
+
+#sbox_pub_profile:
+  div.thumb:
+    float: left
+    width: 60px
+    height: 60px
+    
+    img:
+      width: 60px
+      height: 60px
+    
+  div.info:
+    float: left
+    width: 230px
+    font-size: 86%
+
+  .ro_row:
+    margin: 0.2em 0.3em 0.5em 0.3em
+    
+    span:
+      &.label:
+        width: 94px
+        padding: 0
+
+.more_in_link:
+  text-align: right
+  margin-bottom: 0
+  
+#home_box_new, #home_box_categories:
+  width: 49.5%
+  float: left
+  
+#home_box_pop, #home_box_fav:
+  width: 49.5%
+  float: right
+
+.search_more_warning:
+  font-weight: bold
+  color: #9F6000

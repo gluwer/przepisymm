@@ -1,0 +1,20 @@
+============================================
+Przepisy diety Montignac - Open sourced code
+============================================
+
+The code needs kay framework to work properly. You can find it on http://code.google.com/p/kay-framework/
+Put the kay folder or sym link to it in main folder.
+Project was tested with kay trunk version from January 2010, but it should work fine also with 0.8 or newer.
+
+The code is open sourced as it is without any warranties. To make it usable, you have to edit settings.py file and provide proper Google Friend Connect code, change the application name and add necessary static pages.
+
+The lib folder contains external libraries that are not published with the same license as PrzepisyMM code. External libraries:
+- appstats
+- markdown
+- gaefy
+- oauth
+- opensocial
+
+The same folder also contain two pluggable apps: kay_sitemap and kay_notify. Both are based on similar applications from Django framework.
+
+Kay framework needs a small patch to get the code working. The patch may not be needed now but was required in January 2010. You can find the patch in kay-patch.diff in main folder.

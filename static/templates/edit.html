@@ -1,0 +1,15 @@
+{% extends 'base1c.html' %}
+
+{% block title %}Edycja strony statycznej{% endblock title %}
+
+{% block meta_desc %}Edycja strony statycznej{% endblock %}
+
+{% block content %}
+<div id="box_static" class="box">
+  <h2>Edycja strony statycznej</h2>
+  <div class="box_cnt">
+    <p>Użyj "[TOC]" dla spisu treści, <a href="http://daringfireball.net/projects/markdown/syntax">składnia Markdown</a></p>
+    {{ form() }}
+  </div>  
+</div>
+{% endblock content %}

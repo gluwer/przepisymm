@@ -1,0 +1,12 @@
+{% extends 'base1c.html' %}
+
+{% block title %}Konto użytkownika {% if not active %}zostało zablokowane{% else %}jest zastrzeżone{% endif %}{% endblock title %}
+
+{% block content %}
+<div id="box_private" class="box">
+  <h2>Konto użytkownika {% if not active %}zostało zablokowane{% else %}jest zastrzeżone{% endif %}</h2>
+  <div class="box_cnt">
+    <p>Przepraszamy, ale z powodu podanego w tytule nie możemy wyświetlić szczegółów związanych z tym użytkownikiem.</p>
+  </div>  
+</div>
+{% endblock content %}

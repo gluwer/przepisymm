@@ -1,0 +1,39 @@
+{% extends 'base2c.html' %}
+
+{% block title %}{{ recipe.title|e }}{% endblock title %}
+
+{% block content %}
+<div id="box_recipe_view" class="box">
+  <h2>Przepis: "{{ recipe.title|e }}"</h2>
+  <div class="box_cnt">
+    <p class="notice">Przepis nie jest dostępny publicznie!</p>
+    {% if recipe.private == True %}
+      <p>Jeśli jesteś autorem przepisu i chcesz go zobaczyć, zaloguj się!</p>
+    {% else %}
+      <p>Jeśli jesteś autorem przepisu lub znajomym autora, zaloguj się, aby zobaczyć przepis!</p>
+    {% endif %}
+    {% if is_admin == True %}
+      <div><a class="link_as_btn disable_alert" href="{{ url_for('przepisy/disable', key=recipe.key()) }}">Wyłącz!</a></div>
+    {% endif %}
+  </div> 
+</div>
+{% endblock content %}
+
+{% block sidebox %}
+<div id="sbox_other_recipes" class="box sbox">
+  <h2>Podobne przepisy publiczne</h2>
+  <div class="box_cnt">
+    <ul>
+      {% for recipe in similar %}
+        <li><a href="{{ recipe.get_url() }}">{{ recipe.title|e }}</a></li>
+      {% else %}
+        <li class="nobullet"><em>brak podobnych przepisów publicznych!</em></li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+{% endblock sidebox %}
+
+{% block head_js_config %}
+settings.removeDisableButtons = true;
+{% endblock %}

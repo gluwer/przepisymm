@@ -1,0 +1,8 @@
+cron:
+- description: views update
+  url: /przepisy/cron/update_recipe_views
+  schedule: every 30 minutes
+
+- description: friends update
+  url: /przepisy/cron/update_friends
+  schedule: every 53 minutes

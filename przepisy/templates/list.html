@@ -1,0 +1,19 @@
+{% extends 'base2c.html' %}
+
+{% block title %}Moje przepisy{% endblock title %}
+
+{% block content %}
+<div id="box_main" class="box">
+  <h2>{% if ordering == 'nowe' %}Najnowsze przepisy{% else %}Najpopularniejsze przepisy{% endif %}</h2>
+  <div class="box_cnt table_in">
+    {% include 'przepisy/includes/list.html' %}
+  </div>
+</div>
+{% endblock content %}
+
+{% block sidebox %}
+<div id="sbox_other" class="box sbox">
+  <h2>Polecane przepisy</h2>
+  <div id="gfc_recommend" class="box_cnt"></div>
+</div>
+{% endblock sidebox %}

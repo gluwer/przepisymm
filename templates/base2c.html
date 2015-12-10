@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block base_content %}
+    <div id="bd" class="bd2c">
+        <div class="main">
+            {% block content %}{% endblock content %}
+        </div>
+    </div>
+    <div id="sc" class="clearfix">
+        {% block sidebox %}{% endblock sidebox %}
+    </div>    
+{% endblock base_content %}

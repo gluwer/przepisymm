@@ -1,0 +1,32 @@
+{% extends 'base1c.html' %}
+
+{% block head_js_config %}
+settings.gfcOnLoad = function(securityToken) {
+  if (!window.gfcFirstTime) {
+    window.gfcFirstTime = 1;
+    google.friendconnect.requestSignOut();
+  } else {
+    window.top.location.href = '/';
+  }
+};
+{% endblock %}
+
+{% block title %}Wylogowanie{% endblock title %}
+
+{% block gfc_login %}{% endblock %}
+
+{% block content %}
+<div id="box_logout" class="box">
+  <h2>Wylogowanie</h2>
+  <div class="box_cnt">
+    <p>
+      Właśnie następuje proces wylogowania z serwisu. Po chwili zostaniesz przekierowany na stronę główną...
+    </p>
+  </div>  
+</div>
+{% endblock content %}
+
+
+
+
+

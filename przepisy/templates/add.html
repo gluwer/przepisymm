@@ -1,0 +1,66 @@
+{% extends 'base2c.html' %}
+
+{% block title %}Dodaj przepis{% endblock title %}
+
+{% block content %}
+<div id="box_recipe_form" class="box">
+  <h2>Dodaj przepis</h2>
+  <div class="box_cnt">
+    {% call form(class_='recipe') %}
+      <dl>
+        {{ form.title.as_dd(class_='title_check') }}
+        {{ form.ingr.as_dd(class_='ingredients') }}
+        {{ form.recipe.as_dd() }}
+        {{ form.tags.as_dd() }}
+        {{ form.category.as_dd() }}
+        {{ form.phase.as_dd() }}
+        {{ form.type.as_dd() }}
+        {{ form.time.as_dd() }}
+        {{ form.ig.as_dd() }}
+        {{ form.rec_vis.as_dd() }}
+      </dl>
+      {{ form.default_actions(label='Dodaj przepis') }}
+    {% endcall %}
+  </div> 
+</div>
+
+<script type="text/html" id="add_remove_tpl">
+<!--
+  <dd class="ingr_add_remove">
+  <% if (up) { %>
+    <a class="icon arrow-up" title="Do góry">Do góry</a>
+  <% } %>
+  <% if (down) { %>
+    <a class="icon arrow-down" title="W dół">W dół</a>
+  <% } %>
+  <% if (add) { %>
+    <a class="icon add" title="Dodaj">Dodaj</a>
+  <% } %>
+  <% if (remove) { %>
+    <a class="icon delete" title="Usuń">Usuń</a>
+  <% } %>
+  </dd>
+-->
+</script>
+
+{% endblock content %}
+
+{% block sidebox %}
+<div id="sbox_add_info" class="box sbox">
+  <h2>Pomoc</h2>
+  <div class="box_cnt">
+    <p>W opisie przyrządzenia możesz zastosować kilka elementów formatujących:</p>
+    <ul>
+      <li>*kursywę* - <em>kursywę</em></li>
+      <li>**pogrubienie** - <strong>pogrubienie</strong></li>
+      <li>* tekst - listę nienumerowaną</li>
+      <li>1. tekst - listę numerowaną</li>
+    </ul>
+    <p>Składniki dodawaj, używając odpowiedniej tabelki z polami. Skorzystaj z automatycznego podpowiadania!</p>
+  </div>
+</div>
+{% endblock sidebox %}
+
+{% block head_js_config %}
+settings.addIngredientsLogic = true;
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'base2c.html' %}
+
+{% block title %}Informacje o koncie/Zmiana ustawień{% endblock title %}
+
+{% block content %}
+<div id="box_account" class="box">
+  <h2>Informacje o koncie/Zmiana ustawień</h2>
+  <div class="box_cnt">
+    {% call form(class_='account_form') %}
+      <fieldset id="box_account_info">
+        <legend>Informacje o koncie</legend>
+        <p class="ro_row clearfix"><span class="label">Imię/Pseudonim:</span><span class="value">{{ info.name|e }}</span></p>
+        <p class="ro_row clearfix"><span class="label">Publicznych przepisów:</span><span class="value">{{ info.public_recipes }}</span></p>
+        <p class="ro_row clearfix"><span class="label">Z nami od:</span><span class="value">{{ info.join_date }}</span></p>
+      </fieldset>
+      <fieldset id="box_account_edit">
+        <legend>Zmiana ustawień</legend>
+        <p>Aby zmienić ustawienia takie jak miniaturka i nazwa lub też zarządzać znajomymi i aktywnościami, <a href="#" onclick="google.friendconnect.requestSettings(); return false;">kliknij tutaj</a>!<br />
+        Poniżej zmienisz ustawienia związane bezpośrednio z Twoim kontem na <i>Przepisy diety Montignac</i>.</p>
+        <dl>{{ form.rec_vis.as_dd() }}</dl>
+        <dl>{{ form.pro_vis.as_dd() }}</dl> 
+        {{ form.default_actions(label='Zapisz') }}
+      </fieldset>
+    {% endcall %}
+  </div>  
+</div>
+{% endblock content %}
+
+{% block sidebox %}
+<div id="sbox_i_on_website" class="box sbox">
+  <h2>Ja na witrynie</h2>
+  <div class="box_cnt">
+    <ul>
+      <li><a href="{{ request.user.get_url() }}">Widok publiczny konta</a></li>
+      <li><a href="{{ url_for('przepisy/my_list') }}">Moje przepisy</a></li>
+    </ul>
+  </div>
+</div>
+{% endblock sidebox %}

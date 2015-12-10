@@ -1,0 +1,32 @@
+{% extends 'base2c.html' %}
+
+{% block title %}Przepisy znajomych{% endblock title %}
+
+{% block content %}
+<div id="box_main" class="box withordering">
+  <h2>Przepisy znajomych</h2>
+  <div class="ordering_bar">Sortuj wg:
+      <a {% if ordering == 'popularne' %}class="active" {% endif %}href="{{ url_for('przepisy/friend_list', ordering='popularne') }}">popularności</a>
+    | <a {% if ordering == 'nowe' %}class="active" {% endif %}href="{{ url_for('przepisy/friend_list', ordering='nowe') }}">daty</a>
+    | <a {% if ordering == 'tytul' %}class="active" {% endif %}href="{{ url_for('przepisy/friend_list', ordering='tytul') }}">tytułu</a>
+  </div>
+  <div class="box_cnt table_in">
+    {% include 'przepisy/includes/friend_list.html' %}
+  </div>
+</div>
+{% endblock content %}
+
+{% block sidebox %}
+<div id="sbox_favs" class="box sbox">
+  <h2>Znajomi używający tej witryny</h2>
+  <div class="box_cnt">
+    <ul>
+      {% for friend in friends %}
+        <li><a href="{{ url_for('gfcaccount/user', id=friend['id']) }}">{{ friend['displayName']|e }}</a></li>
+      {% else %}
+        <li class="nobullet"><em>nie masz żadnych znajomych na tej witrynie!</em></li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+{% endblock sidebox %}

@@ -1,0 +1,13 @@
+{% extends 'base_error.html' %}
+
+{% block title %}Przepraszamy, wystapił błąd serwera{% endblock %}
+
+{% block content %}
+<div id="box_error" class="box">
+  <h2>Przepraszamy, wystapił błąd serwera!</h2>
+  <div class="box_cnt">
+    <p>Niestety, wystapił nieprzewidziany błąd serwera. Administrator serwisu zostanie o tym powiadomiony automatycznie.</p>
+    <p>Spróbuj odwiedzić tę stronę później lub <a href="/">przejdź do strony głównej</a>.</p>
+  </div>
+</div>
+{% endblock content %}

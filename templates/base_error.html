@@ -1,0 +1,23 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="pl" xmlns="http://www.w3.org/1999/xhtml" xml:lang="pl">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>{% block title %}{% endblock %} - Przepisy diety Montignac</title>
+    <link rel="stylesheet" type="text/css" href="/m/1/a.css" />	
+  </head>
+  <body>
+    <div class="d0">
+      <div id="hd">
+				<h1><a href="/">Przepisy diety Montignac</a> <span class="beta">beta</span></h1>
+				<p class="slogan">Znajdź, co lubisz po składnikach, które masz!</p>
+      </div>
+      <div id="bd">
+        {% block content %}{% endblock content %}
+      </div>
+      <div id="ft">
+        <p>&copy; 2009-2010 Rafał Jońca</p>
+      </div>            
+    </div>
+		<script type="text/javascript" src="http://app.sugester.pl/przepisymm/widget.js"></script>
+  </body>
+</html>

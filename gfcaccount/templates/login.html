@@ -1,0 +1,43 @@
+{% extends 'base1c.html' %}
+
+{% block head_js_config %}
+settings.gfcOnLoad = function(securityToken) {
+  if (!window.gfcFirstTime) {
+    window.gfcFirstTime = 1;
+  } else { 
+    var url = $(document).getUrlParam("next") || '/';
+    url = unescape(String(url).replace(/\+/g, " "));
+    window.top.location.href = url.substring(0, 1) != '/' ? '/' : url;
+  }
+};
+{% endblock %}
+
+{% block title %}Logowanie{% endblock title %}
+
+{% block gfc_login %}{% endblock %}
+
+{% block content %}
+<div id="box_login" class="box">
+  <h2>Zaloguj się</h2>
+  <div class="box_cnt">
+    <p>Dostęp do strony możliwy jest dopiero po zalogowaniu. Aby się zalogować (i dołączyć do witryny), kliknij poniższy przycisk (nie musisz się rejestrować!):</p>
+    <div id="gfc_button"></div>
+    <p>
+      Witryna przepisów Montignac wykorzystuje system logowania Sień Znajomych Google (Google Friend Connect), który
+      pozwala nie tylko na bezpieczne logowanie z wykorzystaniem istniejącego konta Google
+      (<b>nie musisz się osobno rejestrować na witrynie</b>),
+      ale również daje szansę na łatwe komunikowanie się z innymi członkami witryny.
+    </p>
+    <p>Dołączenie do witryny wiąże się z wieloma zaletami. Będziesz mógł między innymi:</p>
+    <ul>
+      <li>dodawać przepisy i tworzyć ich własną biblioteczkę,</li>
+      <li>udostępniać wybrane przepisy innym użytkownikom serwisu,</li>
+      <li>komentować i oceniać przepisy innych,</li>
+      <li>utworzyć listę 20 ulubionych przepisów.</li>
+    </ul>
+  </div>  
+</div>
+{% endblock content %}
+
+
+

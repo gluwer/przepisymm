@@ -1,0 +1,27 @@
+{% extends 'base2c.html' %}
+
+{% block title %}{{ info.name|e }} - Profil publiczny{% endblock title %}
+
+{% block content %}
+<div id="box_main" class="box withordering">
+  <h2>Przepisy publiczne użytkownika {{ info.name|e }}</h2>
+  <div class="box_cnt table_in">
+    {% include 'przepisy/includes/public_list.html' %}
+  </div>
+</div>
+{% endblock content %}
+
+{% block sidebox %}
+<div id="sbox_pub_profile" class="box sbox">
+  <h2>Informacje o profilu</h2>
+  <div class="box_cnt">
+    <div class="thumb"><img src="{{ info.thumbnail }}" /></div>
+    <div class="info clearfix">
+      <p class="ro_row clearfix"><span class="label">Imię/Pseudonim:</span><span class="value">{{ info.name|e }}</span></p>
+      <p class="ro_row clearfix"><span class="label">Przepisów pub.:</span><span class="value">{{ info.public_recipes }}</span></p>
+      <p class="ro_row clearfix"><span class="label">Z nami od:</span><span class="value">{{ info.join_date }}</span></p>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+</div>
+{% endblock sidebox %}

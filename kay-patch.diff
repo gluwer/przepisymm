@@ -1,0 +1,42 @@
+diff --git a/kay/__init__.py b/kay/__init__.py
+--- a/kay/__init__.py
++++ b/kay/__init__.py
+@@ -137,3 +137,11 @@
+     sys.path = [LIB_DIR] + sys.path
+   if not PROJECT_LIB_DIR in sys.path:
+     sys.path = [PROJECT_LIB_DIR] + sys.path
++
++  from google.appengine.dist import use_library
++  use_library('django', '1.1')
++  import django
++
++  # Set proper django version
++  os.environ['DJANGO_SETTINGS_MODULE'] = 'settings_django'
++
+diff --git a/kay/utils/forms/__init__.py b/kay/utils/forms/__init__.py
+--- a/kay/utils/forms/__init__.py
++++ b/kay/utils/forms/__init__.py
+@@ -2099,9 +2099,8 @@
+                            'to request')
+     path = self.request.path
+     user_id = -1
+-    # TODO: implement
+-    #if self.request.user.is_somebody:
+-    #    user_id = self.request.user.id
++    if self.request.user.is_authenticated:
++        user_id = self.request.user.key().name()
+     try:
+       login_time = self.request.session.get('lt', -1)
+     except AttributeError:
+diff --git a/kay/utils/forms/modelform.py b/kay/utils/forms/modelform.py
+--- a/kay/utils/forms/modelform.py
++++ b/kay/utils/forms/modelform.py
+@@ -147,7 +147,7 @@
+                                'initial' not in kwargs):
+         choices.append(('', '---------'))
+       for choice in self.choices:
+-        choices.append((str(choice), unicode(choice)))
++        choices.append((unicode(choice), unicode(choice)))
+       defaults['choices'] = choices
+       form_class = forms.ChoiceField
+     if self.default is not None:
